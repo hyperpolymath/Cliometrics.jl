@@ -4,7 +4,7 @@
 > **Purpose:** Unambiguous instructions for Sonnet to complete all stubs, TODOs, and placeholder code.
 > **Honest completion before this file:** 35%
 
-The Julia source code (`src/Cliometrics.jl`) has 7 implemented functions out of 11 exported symbols. Four exported functions have NO implementation at all: `interpolate_missing_years`, `quantify_institutions`, `counterfactual_scenario`, and `estimate_treatment_effect`. The README claims features (sigma-convergence, outlier detection, cross-country alignment, long-run trend analysis) that have zero code behind them. The entire RSR template layer (Idris2 ABI, Zig FFI, contractiles, SCM files) is uncustomized boilerplate with `{{PROJECT}}` placeholders throughout. The SCM directory is misspelled (`.machines_readable/6scm/` instead of `.machine_readable/`). Multiple files still use AGPL-3.0-or-later instead of PMPL-1.0-or-later.
+The Julia source code (`src/Cliometrics.jl`) has 7 implemented functions out of 11 exported symbols. Four exported functions have NO implementation at all: `interpolate_missing_years`, `quantify_institutions`, `counterfactual_scenario`, and `estimate_treatment_effect`. The README claims features (sigma-convergence, outlier detection, cross-country alignment, long-run trend analysis) that have zero code behind them. The entire RSR template layer (Idris2 ABI, Zig FFI, contractiles, SCM files) is uncustomized boilerplate with `{{PROJECT}}` placeholders throughout. The SCM directory is misspelled (`.machines_readable/6scm/` instead of `.machine_readable/`). Multiple files still use PMPL-1.0-or-later instead of PMPL-1.0-or-later.
 
 ---
 
@@ -200,7 +200,7 @@ using Pkg; Pkg.test()
 
 ---
 
-## TASK 6: Fix SPDX license headers — replace AGPL-3.0-or-later with PMPL-1.0-or-later (HIGH)
+## TASK 6: Fix SPDX license headers — replace PMPL-1.0-or-later with PMPL-1.0-or-later (HIGH)
 
 **Files:**
 - `/var/mnt/eclipse/repos/Cliometrics.jl/.machines_readable/6scm/STATE.scm` (line 1)
@@ -214,10 +214,10 @@ using Pkg; Pkg.test()
 - `/var/mnt/eclipse/repos/Cliometrics.jl/examples/SafeDOMExample.res` (line 1)
 - `/var/mnt/eclipse/repos/Cliometrics.jl/docs/CITATIONS.adoc` (line 13, inside bibtex block)
 
-**Problem:** These files use `AGPL-3.0-or-later` which is the OLD license. Per CLAUDE.md, the primary license is PMPL-1.0-or-later and AGPL-3.0 must NEVER be used.
+**Problem:** These files use `PMPL-1.0-or-later` which is the OLD license. Per CLAUDE.md, the primary license is PMPL-1.0-or-later and AGPL-3.0 must NEVER be used.
 
 **What to do:**
-1. In each file listed above, replace `AGPL-3.0-or-later` with `PMPL-1.0-or-later`.
+1. In each file listed above, replace `PMPL-1.0-or-later` with `PMPL-1.0-or-later`.
 2. For `docs/CITATIONS.adoc` line 13, also update the bibtex `license` field value.
 3. Do NOT change the SPDX headers in `src/Cliometrics.jl` or `test/runtests.jl` (they already use PMPL-1.0-or-later correctly).
 
@@ -337,7 +337,7 @@ grep -c "Cliometrics" ROADMAP.adoc
 
 **Files:** `/var/mnt/eclipse/repos/Cliometrics.jl/docs/CITATIONS.adoc`
 
-**Problem:** The entire citations file references `rsr-template-repo` and uses author `Polymath, Hyper` instead of the correct `Jewell, Jonathan D.A.`. The year is 2025 instead of 2026. The license field says AGPL-3.0-or-later.
+**Problem:** The entire citations file references `rsr-template-repo` and uses author `Polymath, Hyper` instead of the correct `Jewell, Jonathan D.A.`. The year is 2025 instead of 2026. The license field says PMPL-1.0-or-later.
 
 **What to do:**
 1. Replace the title on line 1: `RSR-template-repo` to `Cliometrics.jl`.

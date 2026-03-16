@@ -5,14 +5,14 @@
 TEMPLATE INSTRUCTIONS (delete this block before publishing)
 ============================================================================
 Replace all {{PLACEHOLDER}} values with your information:
-  {{PROJECT_NAME}}     - Your project name
+  Cliometrics.Jl     - Your project name
   hyperpolymath            - GitHub username or org (e.g., hyperpolymath)
   Cliometrics.jl             - Repository name
-  jonathan.jewell@open.ac.uk   - Security contact email
-  {{PGP_FINGERPRINT}}  - Your PGP key fingerprint (40 chars, no spaces)
+  j.d.a.jewell@open.ac.uk   - Security contact email
+  [PGP fingerprint not set]  - Your PGP key fingerprint (40 chars, no spaces)
   {{PGP_KEY_URL}}      - URL to your public PGP key
   {{WEBSITE}}          - Your website/domain
-  {{CURRENT_YEAR}}     - Current year for copyright
+  2026     - Current year for copyright
 
 Optional: Remove sections that don't apply (e.g., PGP if you don't use it)
 ============================================================================
@@ -58,19 +58,19 @@ If you cannot use GitHub Security Advisories, you may email us directly:
 
 | | |
 |---|---|
-| **Email** | jonathan.jewell@open.ac.uk |
+| **Email** | j.d.a.jewell@open.ac.uk |
 | **PGP Key** | [Download Public Key]({{PGP_KEY_URL}}) |
-| **Fingerprint** | `{{PGP_FINGERPRINT}}` |
+| **Fingerprint** | `[PGP fingerprint not set]` |
 
 ```bash
 # Import our PGP key
 curl -sSL {{PGP_KEY_URL}} | gpg --import
 
 # Verify fingerprint
-gpg --fingerprint jonathan.jewell@open.ac.uk
+gpg --fingerprint j.d.a.jewell@open.ac.uk
 
 # Encrypt your report
-gpg --armor --encrypt --recipient jonathan.jewell@open.ac.uk report.txt
+gpg --armor --encrypt --recipient j.d.a.jewell@open.ac.uk report.txt
 ```
 
 > **⚠️ Important:** Do not report security vulnerabilities through public GitHub issues, pull requests, discussions, or social media.
@@ -348,7 +348,7 @@ To stay informed about security updates:
 
 ## Security Best Practices
 
-When using {{PROJECT_NAME}}, we recommend:
+When using Cliometrics.Jl, we recommend:
 
 ### General
 
@@ -383,7 +383,7 @@ When using {{PROJECT_NAME}}, we recommend:
 
 | Purpose | Contact |
 |---------|---------|
-| **Security issues** | [Report via GitHub](https://github.com/hyperpolymath/Cliometrics.jl/security/advisories/new) or jonathan.jewell@open.ac.uk |
+| **Security issues** | [Report via GitHub](https://github.com/hyperpolymath/Cliometrics.jl/security/advisories/new) or j.d.a.jewell@open.ac.uk |
 | **General questions** | [GitHub Discussions](https://github.com/hyperpolymath/Cliometrics.jl/discussions) |
 | **Other enquiries** | See [README](README.md) for contact information |
 
@@ -399,8 +399,8 @@ This security policy may be updated from time to time. Significant changes will 
 
 ---
 
-*Thank you for helping keep {{PROJECT_NAME}} and its users safe.* 🛡️
+*Thank you for helping keep Cliometrics.Jl and its users safe.* 🛡️
 
 ---
 
-<sub>Last updated: {{CURRENT_YEAR}} · Policy version: 1.0.0</sub>
+<sub>Last updated: 2026 · Policy version: 1.0.0</sub>

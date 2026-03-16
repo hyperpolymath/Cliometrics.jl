@@ -229,7 +229,7 @@ cd /var/mnt/eclipse/repos/Cliometrics.jl && grep -rn "AGPL-3.0" --include="*.scm
 
 ---
 
-## TASK 7: Replace `{{PROJECT}}` / `{{REPO}}` / `{{OWNER}}` / `{{FORGE}}` template placeholders (HIGH)
+## TASK 7: Replace `{{PROJECT}}` / `Cliometrics.jl` / `hyperpolymath` / `github.com` template placeholders (HIGH)
 
 **Files:**
 - `/var/mnt/eclipse/repos/Cliometrics.jl/src/abi/Types.idr` (lines 6, 7, 11)
@@ -244,20 +244,20 @@ cd /var/mnt/eclipse/repos/Cliometrics.jl && grep -rn "AGPL-3.0" --include="*.scm
 - `/var/mnt/eclipse/repos/Cliometrics.jl/SECURITY.md` (lines 9, 10, 43, 206, 325, 374, 386, 387)
 - `/var/mnt/eclipse/repos/Cliometrics.jl/0-AI-MANIFEST.a2ml` (line 7, 56)
 
-**Problem:** The entire RSR template layer was never customized. Every `{{PROJECT}}`, `{{project}}`, `{{OWNER}}`, `{{REPO}}`, and `{{FORGE}}` placeholder is still present, making the Idris2 ABI, Zig FFI, and community files non-functional.
+**Problem:** The entire RSR template layer was never customized. Every `{{PROJECT}}`, `{{project}}`, `hyperpolymath`, `Cliometrics.jl`, and `github.com` placeholder is still present, making the Idris2 ABI, Zig FFI, and community files non-functional.
 
 **What to do:**
 1. Replace `{{PROJECT}}` with `Cliometrics` (capitalized, for module/display names).
 2. Replace `{{project}}` with `cliometrics` (lowercase, for C symbols and file names).
-3. Replace `{{OWNER}}` with `hyperpolymath`.
-4. Replace `{{REPO}}` with `Cliometrics.jl`.
-5. Replace `{{FORGE}}` with `github.com`.
+3. Replace `hyperpolymath` with `hyperpolymath`.
+4. Replace `Cliometrics.jl` with `Cliometrics.jl`.
+5. Replace `github.com` with `github.com`.
 6. Replace `[YOUR-REPO-NAME]` with `Cliometrics.jl` in `0-AI-MANIFEST.a2ml`.
-7. Replace `{{SECURITY_EMAIL}}` with `jonathan.jewell@open.ac.uk` in SECURITY.md if present.
+7. Replace `6759885+hyperpolymath@users.noreply.github.com` with `j.d.a.jewell@open.ac.uk` in SECURITY.md if present.
 
 **Verification:**
 ```bash
-cd /var/mnt/eclipse/repos/Cliometrics.jl && grep -rn '{{PROJECT}}\|{{project}}\|{{OWNER}}\|{{REPO}}\|{{FORGE}}\|\[YOUR-REPO-NAME\]' . --include="*.idr" --include="*.zig" --include="*.md" --include="*.a2ml" --include="*.adoc" | grep -v ".git/" | grep -v "SONNET-TASKS"
+cd /var/mnt/eclipse/repos/Cliometrics.jl && grep -rn '{{PROJECT}}\|{{project}}\|hyperpolymath\|Cliometrics.jl\|github.com\|\[YOUR-REPO-NAME\]' . --include="*.idr" --include="*.zig" --include="*.md" --include="*.a2ml" --include="*.adoc" | grep -v ".git/" | grep -v "SONNET-TASKS"
 # Should return zero lines
 ```
 
@@ -572,7 +572,7 @@ julia --project=. -e 'using Pkg; Pkg.test()'
 grep -rn "AGPL-3.0" . --include="*.scm" --include="*.zig" --include="*.res" --include="*.adoc" --include="*.jl" | grep -v ".git/" | grep -v "SONNET-TASKS"
 
 # 3. No template placeholders remain
-grep -rn '{{PROJECT}}\|{{project}}\|{{OWNER}}\|{{REPO}}\|{{FORGE}}\|\[YOUR-REPO-NAME\]' . --include="*.idr" --include="*.zig" --include="*.md" --include="*.a2ml" --include="*.adoc" | grep -v ".git/" | grep -v "SONNET-TASKS"
+grep -rn '{{PROJECT}}\|{{project}}\|hyperpolymath\|Cliometrics.jl\|github.com\|\[YOUR-REPO-NAME\]' . --include="*.idr" --include="*.zig" --include="*.md" --include="*.a2ml" --include="*.adoc" | grep -v ".git/" | grep -v "SONNET-TASKS"
 
 # 4. No PLMP typos remain
 grep -rn "PLMP" . --include="*" | grep -v ".git/" | grep -v "SONNET-TASKS"

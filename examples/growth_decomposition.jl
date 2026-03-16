@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: PMPL-1.0-or-later
 # Growth Decomposition Example for Cliometrics.jl
-# Author: Jonathan D.A. Jewell <jonathan.jewell@open.ac.uk>
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 
 using Cliometrics
 using DataFrames

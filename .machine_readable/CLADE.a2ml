@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Clade declaration — part of the gv-clade-index registry
+# See: https://github.com/hyperpolymath/gv-clade-index
+
+[identity]
+uuid = "1c0e400c-ac2f-5a80-9b06-4fc03a671509"
+primary-forge = "github"
+primary-owner = "hyperpolymath"
+canonical-name = "Cliometrics.jl"
+prefixed-name = "dx-Cliometrics.jl"
+
+[clade]
+primary = "dx"
+secondary = []
+assigned = "2026-03-16"
+rationale = ""
+
+[forges]
+github = "hyperpolymath/Cliometrics.jl"
+gitlab = "hyperpolymath/Cliometrics.jl"
+bitbucket = "hyperpolymath/Cliometrics.jl"
+
+[lineage]
+type = "standalone"
+parent = "Julia package — quantitative economic history"
+born = "2026-03-16"

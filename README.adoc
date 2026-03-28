@@ -1,5 +1,0 @@
-= Cliometrics.jl
-:toc: preamble
-:icons: font
-
-

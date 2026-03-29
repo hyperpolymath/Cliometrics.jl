@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+
+[project]
+name = "Cliometrics.jl"
+description = "Cliometrics Julia package"
+
+[container]
+base = "cgr.dev/chainguard/wolfi-base:latest"

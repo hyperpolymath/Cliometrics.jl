@@ -475,3 +475,6 @@ using Statistics
         @test result.counterfactual[4] ≈ result.counterfactual[3] + actual_change_3_to_4 atol=1e-6
     end
 end
+
+include("e2e_test.jl")
+include("property_test.jl")

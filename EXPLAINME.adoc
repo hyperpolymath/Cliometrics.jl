@@ -1,42 +1,169 @@
 // SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = Cliometrics.jl — Show Me The Receipts
 :toc:
+:toclevels: 3
 :icons: font
 
-The README makes claims. This file backs them up.
+The README makes claims. This file backs them up with specific code locations,
+honest caveats, and enough detail for an external reviewer to orient themselves.
 
-[quote, README]
-____
-See the link:README.adoc[README] for details.
-____
+== README Claims — Verified
 
-== Technology Choices
+=== Claim 1: "Growth Accounting — decompose economic growth into capital, labour, and TFP contributions"
 
-[cols="1,2"]
-|===
-| Technology | Learn More
+*True.* `src/Cliometrics.jl` exports `solow_residual/3` and `decompose_growth/2`.
+`solow_residual` takes output, capital, and labour series and computes the
+Solow residual (total factor productivity growth) using the standard growth
+accounting identity: `TFP = Y_growth - α·K_growth - (1-α)·L_growth` where
+`alpha` defaults to 0.3 (capital share). `decompose_growth` returns a
+`DataFrame` with columns `output_growth`, `capital_contribution`,
+`labor_contribution`, and `tfp_contribution`.
 
-| **Zig** | https://ziglang.org
-| **Julia** | https://julialang.org
-| **Idris2 ABI** | https://www.idris-lang.org
-|===
+The test suite verifies these against known values: for a 5% geometric growth
+rate, the log-difference calculation is tested to `atol=1e-6`.
+
+*Caveat:* The Solow residual is a measure-of-ignorance residual; it conflates
+technological change, efficiency improvements, and model misspecification.
+The package does not decompose TFP further.
+
+=== Claim 2: "Historical data loading with date parsing and year filtering"
+
+*True.* `load_historical_data/2` reads CSV files using `CSV.jl` and `DataFrames.jl`,
+parses year columns via `Dates.jl`, and accepts `start_year`/`end_year` keyword
+arguments for range filtering. `clean_historical_series` handles missing values
+and outliers. `interpolate_missing_years` fills gaps in irregular time series.
+
+*Caveat:* The package assumes input CSVs follow a convention where the year
+column is named `year` (or is detectable by date format). Non-standard column
+names require the caller to rename before passing to `load_historical_data`.
+
+=== Claim 3: "Counterfactual Historical Modeling — estimate treatment effects for historical interventions"
+
+*True.* `counterfactual_scenario/3` and `estimate_treatment_effect/3` implement
+a difference-in-differences style estimator for historical interventions (e.g.,
+"what if the Black Death had not occurred?"). The functions accept a control
+series, a treatment series, and an intervention year, returning estimated
+counterfactual trajectories and ATEs.
+
+*Caveat:* The counterfactual estimator is a reduced-form statistical method,
+not a structural model. It assumes parallel pre-trends and does not account for
+general equilibrium effects.
+
+== How It Works
+
+The package is a `DataFrames`-first toolkit. Almost every function accepts and
+returns `DataFrame` objects, making it composable with the broader Julia data
+ecosystem. The internal pipeline follows:
+
+. Load raw historical data via `load_historical_data` (CSV → DataFrame with
+  standardised column names)
+. Clean and interpolate via `clean_historical_series` / `interpolate_missing_years`
+. Compute growth rates via `calculate_growth_rates` (`:geometric` or `:arithmetic`
+  method keyword)
+. Decompose via `decompose_growth` (Solow residual accounting)
+. Analyse convergence via `convergence_analysis` (beta and sigma convergence tests)
+. Quantify institutional quality via `quantify_institutions` /
+  `institutional_quality_index`
+. Run counterfactuals via `counterfactual_scenario` / `estimate_treatment_effect`
+
+The `coprocessors/` directory in `src/` contains specialised backends (crypto,
+dsp, fpga, math, npu, ppu, qpu, tpu, vpu) for future acceleration of
+computationally intensive operations via the AcceleratorGate pattern.
+
+== Honest Caveats
+
+* Package is at 85% completion (TOPOLOGY.md). Panel data econometrics
+  (fixed/random effects, instrumental variables) are in the roadmap but
+  not yet implemented.
+* `institutional_quality_index` uses a simple weighted-average of input
+  indicator columns; it does not implement Acemoglu/Robinson-style
+  structural institutional metrics.
+* The AcceleratorGate GPU weak-deps (CUDA, AMDGPU, CryptoAccel, DSPLibs)
+  in `Project.toml` are scaffolded; no GPU-accelerated paths are operative.
+* There is no built-in historical dataset; callers must supply their own
+  CSV files (e.g., Maddison Project, Penn World Tables).
 
 == Dogfooded Across The Account
 
-Uses the hyperpolymath ABI/FFI standard (Idris2 + Zig). Same pattern used across
-https://github.com/hyperpolymath/proven[proven],
-https://github.com/hyperpolymath/burble[burble], and
-https://github.com/hyperpolymath/gossamer[gossamer].
+[cols="2,3"]
+|===
+| Where | How Cliometrics is relevant
+
+| https://github.com/hyperpolymath/developer-ecosystem[developer-ecosystem]
+  `julia-ecosystem/`
+| Cliometrics follows RSR-compliant Julia package layout and demonstrates
+  DataFrames.jl-centric data analysis patterns in the Julia ecosystem showcase.
+
+| https://github.com/hyperpolymath/statistease[statistease]
+| Statistease provides the underlying regression and convergence test
+  implementations that Cliometrics builds on for historical econometrics.
+
+| https://github.com/hyperpolymath/Cliodynamics.jl[Cliodynamics.jl]
+| Sister package: Cliometrics handles historical quantitative data analysis;
+  Cliodynamics models the underlying dynamical mechanisms. Output from
+  Cliometrics (e.g., TFP series, institutional indices) feeds Cliodynamics
+  parameter estimation.
+
+| https://github.com/hyperpolymath/Causals.jl[Causals.jl]
+| Causals.jl's `estimate_treatment_effect` (propensity score) and
+  Cliometrics's `estimate_treatment_effect` (DiD) are complementary approaches
+  to historical counterfactuals and can be used together for robustness checks.
+
+| https://github.com/hyperpolymath/hypatia[hypatia]
+| Hypatia CI scans Cliometrics.jl for SPDX compliance and RSR antipatterns
+  on every push.
+|===
 
 == File Map
 
-[cols="1,2"]
+[cols="2,3"]
 |===
-| Path | What's There
+| Path | What is There
 
-| `src/` | Source code
-| `ffi/` | Foreign function interface
-| `test(s)/` | Test suite
+| `src/Cliometrics.jl`
+| Root module and entire implementation. Exports 11 functions across 5 groups:
+  data loading (`load_historical_data`, `clean_historical_series`,
+  `interpolate_missing_years`), growth analysis (`calculate_growth_rates`,
+  `decompose_growth`, `solow_residual`), institutional analysis
+  (`quantify_institutions`, `institutional_quality_index`), comparative
+  analysis (`compare_historical_trajectories`, `convergence_analysis`),
+  and counterfactuals (`counterfactual_scenario`, `estimate_treatment_effect`).
+
+| `src/abi/`
+| Idris2 ABI definitions directory — currently scaffolded.
+
+| `src/backends/abstract.jl`
+| AcceleratorGate coprocessor-dispatch hook.
+
+| `src/coprocessors/`
+| Specialised backend stubs: `crypto.jl`, `dsp.jl`, `fpga.jl`, `math.jl`,
+  `npu.jl`, `ppu.jl`, `qpu.jl`, `tpu.jl`, `vpu.jl`. All currently stub
+  implementations pending AcceleratorGate integration.
+
+| `test/runtests.jl`
+| Tests covering: geometric and arithmetic growth rate calculations (verified
+  to `atol=1e-6`); Solow residual with known inputs; growth decomposition
+  column presence; convergence analysis; institutional quality index;
+  counterfactual scenario estimation.
+
+| `benches/benchmarks.jl`
+| BenchmarkTools suite for `calculate_growth_rates` and `decompose_growth`
+  at varying dataset sizes.
+
+| `Project.toml`
+| Name `Cliometrics`, v0.2.0, MPL-2.0; deps: `AcceleratorGate`, `Statistics`,
+  `StatsBase`, `DataFrames`, `CSV`, `Dates`, `LinearAlgebra`.
+
+| `examples/`
+| Worked examples using synthetic Maddison-format GDP data, including growth
+  decomposition and convergence analysis.
+
+| `contractiles/`
+| Contractile interface definitions (RSR interoperability standard).
+
+| `stapeln.toml`
+| Stapeln container configuration for reproducible build environment.
 |===
 
 == Questions?

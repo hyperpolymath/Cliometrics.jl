@@ -1,5 +1,5 @@
--- SPDX-License-Identifier: PMPL-1.0-or-later
-||| Foreign Function Interface Declarations
+||| SPDX-License-Identifier: PMPL-1.0-or-later
+||| Foreign Function Interface Declarations for CLIOMETRICS.JL
 |||
 ||| This module declares all C-compatible functions that will be
 ||| implemented in the Zig FFI layer.
@@ -7,10 +7,10 @@
 ||| All functions are declared here with type signatures and safety proofs.
 ||| Implementations live in ffi/zig/
 
-module Cliometrics.ABI.Foreign
+module Cliometrics.jl.ABI.Foreign
 
-import Cliometrics.ABI.Types
-import Cliometrics.ABI.Layout
+import Cliometrics.jl.ABI.Types
+import Cliometrics.jl.ABI.Layout
 
 %default total
 
@@ -21,7 +21,7 @@ import Cliometrics.ABI.Layout
 ||| Initialize the library
 ||| Returns a handle to the library instance, or Nothing on failure
 export
-%foreign "C:cliometrics_init, libcliometrics"
+%foreign "C:Cliometrics.jl_init, libCliometrics.jl"
 prim__init : PrimIO Bits64
 
 ||| Safe wrapper for library initialization
@@ -33,7 +33,7 @@ init = do
 
 ||| Clean up library resources
 export
-%foreign "C:cliometrics_free, libcliometrics"
+%foreign "C:Cliometrics.jl_free, libCliometrics.jl"
 prim__free : Bits64 -> PrimIO ()
 
 ||| Safe wrapper for cleanup
@@ -47,7 +47,7 @@ free h = primIO (prim__free (handlePtr h))
 
 ||| Example operation: process data
 export
-%foreign "C:cliometrics_process, libcliometrics"
+%foreign "C:Cliometrics.jl_process, libCliometrics.jl"
 prim__process : Bits64 -> Bits32 -> PrimIO Bits32
 
 ||| Safe wrapper with error handling
@@ -70,12 +70,12 @@ prim__getString : Bits64 -> String
 
 ||| Free C string
 export
-%foreign "C:cliometrics_free_string, libcliometrics"
+%foreign "C:Cliometrics.jl_free_string, libCliometrics.jl"
 prim__freeString : Bits64 -> PrimIO ()
 
 ||| Get string result from library
 export
-%foreign "C:cliometrics_get_string, libcliometrics"
+%foreign "C:Cliometrics.jl_get_string, libCliometrics.jl"
 prim__getResult : Bits64 -> PrimIO Bits64
 
 ||| Safe string getter
@@ -96,7 +96,7 @@ getString h = do
 
 ||| Process array data
 export
-%foreign "C:cliometrics_process_array, libcliometrics"
+%foreign "C:Cliometrics.jl_process_array, libCliometrics.jl"
 prim__processArray : Bits64 -> Bits64 -> Bits32 -> PrimIO Bits32
 
 ||| Safe array processor
@@ -123,7 +123,7 @@ processArray h buf len = do
 
 ||| Get last error message
 export
-%foreign "C:cliometrics_last_error, libcliometrics"
+%foreign "C:Cliometrics.jl_last_error, libCliometrics.jl"
 prim__lastError : PrimIO Bits64
 
 ||| Retrieve last error as string
@@ -150,7 +150,7 @@ errorDescription NullPointer = "Null pointer"
 
 ||| Get library version
 export
-%foreign "C:cliometrics_version, libcliometrics"
+%foreign "C:Cliometrics.jl_version, libCliometrics.jl"
 prim__version : PrimIO Bits64
 
 ||| Get version as string
@@ -162,7 +162,7 @@ version = do
 
 ||| Get library build info
 export
-%foreign "C:cliometrics_build_info, libcliometrics"
+%foreign "C:Cliometrics.jl_build_info, libCliometrics.jl"
 prim__buildInfo : PrimIO Bits64
 
 ||| Get build information
@@ -183,16 +183,13 @@ Callback = Bits64 -> Bits32 -> Bits32
 
 ||| Register a callback
 export
-%foreign "C:cliometrics_register_callback, libcliometrics"
+%foreign "C:Cliometrics.jl_register_callback, libCliometrics.jl"
 prim__registerCallback : Bits64 -> AnyPtr -> PrimIO Bits32
 
 ||| Safe callback registration
 export
 registerCallback : Handle -> Callback -> IO (Either Result ())
 registerCallback h cb = do
-  -- SAFETY: cast casts Idris Callback function type to C-compatible AnyPtr.
-  -- Required for FFI callback registration. The Callback type signature MUST match
-  -- the C function pointer type expected by the library's register_callback function.
   result <- primIO (prim__registerCallback (handlePtr h) (cast cb))
   pure $ case resultFromInt result of
     Just Ok => Right ()
@@ -209,7 +206,7 @@ registerCallback h cb = do
 
 ||| Check if library is initialized
 export
-%foreign "C:cliometrics_is_initialized, libcliometrics"
+%foreign "C:Cliometrics.jl_is_initialized, libCliometrics.jl"
 prim__isInitialized : Bits64 -> PrimIO Bits32
 
 ||| Check initialization status

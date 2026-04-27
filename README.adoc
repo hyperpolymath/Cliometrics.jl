@@ -9,7 +9,7 @@ image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=opensources
 image:https://img.shields.io/badge/Project-Topology-9558B2[Project Topology,link="TOPOLOGY.md"]
 image:https://api.thegreenwebfoundation.org/greencheckimage/github.com[Green Web,link="https://www.thegreenwebfoundation.org/green-web-check/?url=github.com"]
 image:https://img.shields.io/badge/Completion-85%25-green[Completion Status,link="TOPOLOGY.md"]
-image:https://img.shields.io/badge/license-PMPL--1.0--or--later-blue.svg[License,link="LICENSE"]
+image:https://img.shields.io/badge/License-PMPL--1.0--or--later-blue.svg[License: PMPL-1.0-or-later,link="LICENSE"]
 image:https://img.shields.io/badge/julia-1.6+-purple.svg[Julia,link="https://julialang.org"]
 
 A Julia library for quantitative economic history analysis.

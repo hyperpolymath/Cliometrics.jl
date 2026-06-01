@@ -1,0 +1,191 @@
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?logo=github)](https://github.com/sponsors/hyperpolymath)
+
+// SPDX-License-Identifier: MPL-2.0
+// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+
+= Cliometrics.jl
+:toc: preamble
+:icons: font
+
+image:https://img.shields.io/badge/OpenSSF-Best_Practices-green?logo=opensourcesecurity[OpenSSF Best Practices,link="https://www.bestpractices.dev/en/projects/new?repo_url=https://github.com/hyperpolymath/Cliometrics.jl"]
+image:https://img.shields.io/badge/Project-Topology-9558B2[Project Topology,link="TOPOLOGY.md"]
+image:https://api.thegreenwebfoundation.org/greencheckimage/github.com[Green Web,link="https://www.thegreenwebfoundation.org/green-web-check/?url=github.com"]
+image:https://img.shields.io/badge/Completion-85%25-green[Completion Status,link="TOPOLOGY.md"]
+image:https://img.shields.io/badge/License-PMPL--1.0--or--later-blue.svg[License: MPL-2.0,link="LICENSE"]
+image:https://img.shields.io/badge/julia-1.6+-purple.svg[Julia,link="https://julialang.org"]
+
+A Julia library for quantitative economic history analysis.
+
+== Overview
+
+Cliometrics applies economic theory and quantitative methods to the study of
+historical economic phenomena. This package provides tools for:
+
+* *Historical Data Analysis*: Load, clean, and analyze historical economic datasets
+* *Growth Accounting*: Decompose economic growth into capital, labor, and TFP contributions
+* *Convergence Analysis*: Test for economic convergence across regions and time periods
+* *Institutional Analysis*: Quantify and analyze the role of institutions in economic development
+* *Counterfactual Modeling*: Estimate treatment effects and alternative historical scenarios
+
+== Installation
+
+[source,julia]
+----
+using Pkg
+Pkg.add("Cliometrics")
+----
+
+== Quick Start
+
+[source,julia]
+----
+using Cliometrics
+using DataFrames
+
+data = load_historical_data("maddison_historical_gdp.csv")
+growth_rates = calculate_growth_rates(data, :real_gdp_per_capita)
+
+decomposition = decompose_growth(
+    data,
+    output=:gdp, capital=:capital_stock, labor=:labor_force, alpha=0.35
+)
+
+convergence = convergence_analysis(
+    country_data, :initial_gdp_1950, :growth_rate_1950_2000
+)
+
+quality_index = institutional_quality_index(
+    institutions_data,
+    [:rule_of_law, :property_rights, :contract_enforcement],
+    weights=[0.4, 0.3, 0.3]
+)
+----
+
+== Features
+
+=== Growth Analysis ✅
+
+* Geometric and arithmetic growth rate calculations
+* Solow residual (TFP) estimation
+* Growth accounting decomposition
+* Long-run growth trend analysis _(planned for v0.2.0)_
+
+=== Convergence Testing ✅
+
+* Beta-convergence analysis
+* Sigma-convergence testing _(planned for v0.2.0)_
+* Conditional convergence estimation _(planned for v0.2.0)_
+* Half-life calculations
+
+=== Institutional Analysis ✅
+
+* Composite institutional quality indices
+* Institutional change measurement
+* Relationship between institutions and growth
+
+=== Data Tools ✅
+
+* Historical time series cleaning
+* Missing value interpolation
+* Outlier detection and handling _(planned for v0.2.0)_
+* Cross-country data alignment _(planned for v0.2.0)_
+
+=== Causal Inference ✅
+
+* Counterfactual scenario modeling
+* Difference-in-differences estimation (DiD)
+* Treatment effect analysis
+
+== Examples
+
+=== Example 1: Industrial Revolution Growth Analysis
+
+[source,julia]
+----
+using Cliometrics
+uk_data = load_historical_data("broadberry_uk_gdp.csv")
+pre_industrial = filter(row -> 1700 <= row.year < 1780, uk_data)
+industrial = filter(row -> 1780 <= row.year <= 1870, uk_data)
+pre_growth = mean(calculate_growth_rates(pre_industrial, :gdp_per_capita))
+post_growth = mean(calculate_growth_rates(industrial, :gdp_per_capita))
+println("Pre-Industrial: $(round(pre_growth*100, digits=2))% per year")
+println("Industrial Revolution: $(round(post_growth*100, digits=2))% per year")
+----
+
+=== Example 2: Great Divergence Analysis
+
+[source,julia]
+----
+divergence_data = DataFrame(
+    year = 1500:50:1800,
+    western_europe_gdp = [1200, 1300, 1450, 1650, 1900, 2200, 2600],
+    china_gdp = [1100, 1150, 1200, 1250, 1280, 1300, 1320]
+)
+comparison = compare_historical_trajectories(
+    divergence_data, ["Western Europe", "China"], variable=:gdp_per_capita
+)
+----
+
+=== Example 3: Institutions and Growth
+
+[source,julia]
+----
+institutions = DataFrame(
+    country = ["USA", "Haiti", "South Korea", "North Korea"],
+    inclusive_institutions = [0.9, 0.3, 0.8, 0.1],
+    gdp_per_capita_1960 = [15000, 2000, 1200, 1100],
+    gdp_per_capita_2020 = [65000, 1800, 42000, 1300]
+)
+institutions.growth_rate = (institutions.gdp_per_capita_2020 ./
+                           institutions.gdp_per_capita_1960) .^ (1/60) .- 1
+using GLM
+model = lm(@formula(growth_rate ~ inclusive_institutions), institutions)
+----
+
+== Methodology
+
+* *Growth Accounting*: Following Solow (1957) and subsequent literature
+* *Convergence Tests*: Based on Barro & Sala-i-Martin (1992)
+* *Institutional Indices*: Inspired by Acemoglu et al. (2001)
+* *Historical National Accounts*: Compatible with Maddison Project format
+
+== Data Sources
+
+Compatible with major historical datasets:
+
+* Maddison Project Database
+* Penn World Table (historical extensions)
+* Broadberry et al. historical national accounts
+* Polity IV (institutional data)
+* V-Dem (institutional indicators)
+
+== Citation
+
+[source,bibtex]
+----
+@software{cliometrics_jl,
+  author = {Jewell, Jonathan D.A.},
+  title = {Cliometrics.jl: Quantitative Economic History in Julia},
+  year = {2026},
+  url = {https://github.com/hyperpolymath/Cliometrics.jl}
+}
+----
+
+== Contributing
+
+See link:CONTRIBUTING.md[CONTRIBUTING.md] for guidelines.
+
+== References
+
+* Solow, R. M. (1957). "Technical Change and the Aggregate Production Function." _Review of Economics and Statistics_, 39(3), 312–320.
+* Barro, R. J., & Sala-i-Martin, X. (1992). "Convergence." _Journal of Political Economy_, 100(2), 223–251.
+* Acemoglu, D., Johnson, S., & Robinson, J. A. (2001). "The Colonial Origins of Comparative Development." _American Economic Review_, 91(5), 1369–1401.
+* Crafts, N., & Toniolo, G. (Eds.). (1996). _Economic Growth in Europe Since 1945_. Cambridge University Press.
+* Maddison, A. (2007). _Contours of the World Economy 1–2030 AD_. Oxford University Press.
+
+Wondering how this works? See link:EXPLAINME.adoc[].
+
+== License
+
+SPDX-License-Identifier: MPL-2.0 +
+See link:LICENSE[LICENSE].

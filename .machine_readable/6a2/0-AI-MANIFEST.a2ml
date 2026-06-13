@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: MPL-2.0
+# 0-AI-MANIFEST.a2ml — AI agent entry point for the 6a2 directory
+# name = "Cliometrics.jl-6a2-ai-manifest"
+# project = "Cliometrics.jl"
+# schema_version = "1.0"
+
 # AI Manifest for 6a2 Directory
 
 ## Purpose

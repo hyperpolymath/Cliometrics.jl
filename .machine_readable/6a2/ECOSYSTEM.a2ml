@@ -3,7 +3,9 @@
 # Converted from ECOSYSTEM.scm on 2026-03-15
 
 [metadata]
+name = "Cliometrics.jl-ecosystem"
 project = "Cliometrics.jl"
+schema_version = "1.0"
 ecosystem = "hyperpolymath"
 
 [position]

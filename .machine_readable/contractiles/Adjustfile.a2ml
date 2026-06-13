@@ -3,6 +3,11 @@
 # Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 #
 # Cumulative-drift catchment: tolerance bands + corrective actions.
+
+[metadata]
+name = "Cliometrics.jl-adjustfile"
+project = "Cliometrics.jl"
+schema_version = "1.0"
 # Authority: advisory (Yard) — continue-with-warnings; auto_fix where deterministic.
 # Run with: adjust check    Fix with: adjust fix
 #

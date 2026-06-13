@@ -3,7 +3,9 @@
 # Converted from META.scm on 2026-03-15; refreshed 2026-06-13
 
 [metadata]
+name = "Cliometrics.jl-meta"
 project = "Cliometrics.jl"
+schema_version = "1.0"
 author = "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"
 license = "MPL-2.0"
 standard = "RSR 2026"

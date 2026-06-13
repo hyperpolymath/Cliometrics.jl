@@ -8,6 +8,9 @@
 # Reference: ADR-002 in standards/agentic-a2ml/docs/
 
 [metadata]
+name = "Cliometrics.jl-methodology"
+project = "Cliometrics.jl"
+schema_version = "1.0"
 version = "1.0.0"
 last-updated = "2026-03-24"
 spec = "https://github.com/hyperpolymath/standards/blob/main/agentic-a2ml/docs/ADR-002-methodology-layer.adoc"
@@ -55,7 +58,7 @@ perfective = 10   # % for SPDX headers, doc updates, formatting, style
 # Customise this per project — the template default is generic.
 
 [methodology.unique-strength]
-description = "{{PROJECT_UNIQUE_STRENGTH}}"
+description = "Quantitative economic history in Julia: growth accounting, convergence analysis, institutional quality, and counterfactual modeling with Zig FFI for performance-critical paths."
 deepen-not-broaden = true
 
 # ============================================================================

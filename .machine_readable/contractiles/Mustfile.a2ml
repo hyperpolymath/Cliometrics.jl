@@ -3,6 +3,11 @@
 # Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 #
 # What MUST be true about this repository. Hard requirements.
+
+[metadata]
+name = "Cliometrics.jl-mustfile"
+project = "Cliometrics.jl"
+schema_version = "1.0"
 # Run with: must check    Fix with: must fix (where a deterministic fix exists)
 #
 # NOTE (2026-06-13): this REPLACES the file the estate branch carried over

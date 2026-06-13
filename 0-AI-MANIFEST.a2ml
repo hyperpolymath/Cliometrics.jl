@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: MPL-2.0
+# 0-AI-MANIFEST.a2ml — AI agent entry point for Cliometrics.jl
+# name = "Cliometrics.jl-ai-manifest"
+# project = "Cliometrics.jl"
+# schema_version = "1.0"
+
 # ⚠️ STOP - CRITICAL READING REQUIRED
 
 **THIS FILE MUST BE READ FIRST BY ALL AI AGENTS**

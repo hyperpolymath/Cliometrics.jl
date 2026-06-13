@@ -5,6 +5,9 @@
 # bot_directives files (.machine_readable/bot_directives/).
 
 [metadata]
+name = "Cliometrics.jl-gitbot-fleet"
+project = "Cliometrics.jl"
+schema_version = "1.0"
 repo = "Cliometrics.jl"
 last-updated = "2026-06-13"
 owner = "hyperpolymath"

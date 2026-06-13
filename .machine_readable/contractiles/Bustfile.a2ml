@@ -11,6 +11,9 @@
 # (Julia test suite, Zig FFI build), not new policy. Added 2026-06-13.
 
 [bustfile]
+name = "Cliometrics.jl-bustfile"
+project = "Cliometrics.jl"
+schema_version = "1.0"
 version = "1.0.0"
 format = "a2ml"
 repo = "Cliometrics.jl"

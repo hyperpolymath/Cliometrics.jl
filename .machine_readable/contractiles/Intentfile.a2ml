@@ -3,6 +3,11 @@
 # Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 #
 # Paired runner: intend.ncl
+
+[metadata]
+name = "Cliometrics.jl-intentfile"
+project = "Cliometrics.jl"
+schema_version = "1.0"
 # Verb:          intend
 #
 # Semantics: North-star contractile. Declares BOTH concrete committed

@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: MPL-2.0
+# 0-AI-MANIFEST.a2ml — AI agent entry point for the anchor directory
+# name = "Cliometrics.jl-anchor-ai-manifest"
+# project = "Cliometrics.jl"
+# schema_version = "1.0"
+
 # AI Manifest for Anchor Directory
 
 ## Purpose

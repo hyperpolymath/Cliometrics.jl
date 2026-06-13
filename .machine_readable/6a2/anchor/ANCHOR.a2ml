@@ -1,5 +1,9 @@
+# SPDX-License-Identifier: MPL-2.0
 # ⚓ ANCHOR: Cliometrics.jl
 # This is the canonical authority for the Cliometrics.jl repository.
+# name = "Cliometrics.jl-anchor"
+# project = "Cliometrics.jl"
+# schema_version = "1.0"
 
 id: "org.hyperpolymath.Cliometrics.jl"
 version: "1.0.0"

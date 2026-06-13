@@ -7,7 +7,7 @@ K9!
 {
   pedigree = {
     schema_version = "1.0.0",
-    component_type = "TODO: describe component type (e.g., 'build-config', 'metadata')",
+    component_type = "build-config",
     security = {
       leash = 'Kennel,
       trust_level = "data-only",
@@ -16,9 +16,10 @@ K9!
       allow_subprocess = false,
     },
     metadata = {
-      name = "TODO: component-name",
+      # Real name — required by K9 pedigree validator
+      name = "template-kennel",
       version = "1.0.0",
-      description = "TODO: Brief description of what this component contains",
+      description = "Kennel-level (pure data) template for Cliometrics.jl K9 components",
       author = "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>",
     },
   },

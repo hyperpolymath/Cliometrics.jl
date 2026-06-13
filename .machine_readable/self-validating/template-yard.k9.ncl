@@ -7,7 +7,7 @@ K9!
 {
   pedigree = {
     schema_version = "1.0.0",
-    component_type = "TODO: describe component type (e.g., 'validated-config', 'schema')",
+    component_type = "validated-config",
     security = {
       leash = 'Yard,
       trust_level = "validated-config",
@@ -16,9 +16,10 @@ K9!
       allow_subprocess = false,
     },
     metadata = {
-      name = "TODO: component-name",
+      # Real name — required by K9 pedigree validator
+      name = "template-yard",
       version = "1.0.0",
-      description = "TODO: Brief description with validation details",
+      description = "Yard-level (validated config) template for Cliometrics.jl K9 components",
       author = "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>",
     },
   },

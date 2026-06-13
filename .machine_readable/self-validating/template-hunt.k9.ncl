@@ -17,9 +17,10 @@ K9!
       signature_required = true,
     },
     metadata = {
-      name = "Cliometrics.jl",
+      # Real component name — required by K9 pedigree validator
+      name = "template-hunt",
       version = "1.0.0",
-      description = "Build and deployment automation for Cliometrics.jl",
+      description = "Hunt-level (full execution) template for Cliometrics.jl K9 components",
       author = "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>",
     },
     warnings = [

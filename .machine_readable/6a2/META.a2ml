@@ -1,9 +1,27 @@
 # SPDX-License-Identifier: MPL-2.0
 # META.a2ml — Project meta-information
-# Converted from META.scm on 2026-03-15
+# Converted from META.scm on 2026-03-15; refreshed 2026-06-13
 
 [metadata]
 project = "Cliometrics.jl"
 author = "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"
 license = "MPL-2.0"
 standard = "RSR 2026"
+last-updated = "2026-06-13"
+
+[architecture]
+design = "single-module Julia package (src/Cliometrics.jl)"
+ffi = "Zig FFI layer (ffi/zig/) for performance-critical data paths; ABI documented in ABI-FFI-README.md"
+extensions = "12 weak-dep package extensions for optional hardware acceleration (CUDA, ROCm, Metal, TPU, NPU, DSP, FPGA, VPU, QPU, PPU, Math, Crypto)"
+docs = "Documenter.jl; built and published via casket-pages workflow"
+test = "test/runtests.jl includes e2e_test.jl + property_test.jl; CI runs Julia 1.10 + 1.11"
+
+[decisions]
+single-file = "Core logic lives in src/Cliometrics.jl; optional features use Julia package extensions (following Cliodynamics.jl ADR-002 pattern)"
+zig-ffi = "Performance-critical data paths use Zig FFI rather than C or pure Julia; ABI is C-compatible per Idris2 ABI conventions"
+mpl-20 = "License migrated from PMPL-1.0-or-later to MPL-2.0 (commit eca5122)"
+
+[estate]
+governance-checkpoint = "2026-06-13"
+contractile-layout = "flat (06-12 standard)"
+propagation = "live (FARM_DISPATCH_TOKEN)"

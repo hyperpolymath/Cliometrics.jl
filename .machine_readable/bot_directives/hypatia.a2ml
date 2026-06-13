@@ -1,0 +1,53 @@
+# SPDX-License-Identifier: MPL-2.0
+# hypatia.a2ml — Hypatia scanner directives for Cliometrics.jl.
+# Net-new at the 2026-06-13 governance checkpoint per the estate
+# bot_directives standard (hypatia / gitbot-fleet / git-private-farm trio).
+
+[metadata]
+repo = "Cliometrics.jl"
+last-updated = "2026-06-13"
+owner = "hyperpolymath"
+
+[scanner]
+workflow = ".github/workflows/hypatia-scan.yml"
+ignore-file = ".hypatia-ignore"   # ABSENT as of 2026-06-13; created on first real adjudication, each entry carrying a verified rationale
+
+# ============================================================
+# Pre-adjudicated finding classes.
+#
+# These are grounded in documented repo facts (Project.toml, ABI-FFI-README.md,
+# .claude/CLAUDE.md); they are NOT live suppressions.
+# When the scanner first raises one, materialise it into .hypatia-ignore
+# with the EXACT rule-id from the scan output — do not invent rule-ids here.
+# ============================================================
+
+[[accepted-findings]]
+class = "julia/missing-spdx"
+path = "test/**, examples/**"
+status = "known"
+reason = """
+Test and example files may be missing SPDX headers in the current version
+(0.2.0). The estate REUSE/SPDX sweep is a separate workstream. Raise as
+advisory only; do not block CI on this finding until the sweep lands.
+"""
+
+[[accepted-findings]]
+class = "ffi/unsafe-boundary"
+path = "ffi/zig/**"
+status = "justified"
+reason = """
+The Zig FFI layer (ffi/zig/) crosses a C-compatible ABI boundary per
+ABI-FFI-README.md. Unsafe operations here are required for the cross-language
+call and are not logic-level memory-safety regressions. If a new unsafe
+operation appears OUTSIDE ffi/zig/, that IS a finding.
+"""
+
+# ============================================================
+# Prohibited actions
+# ============================================================
+
+[prohibited-actions]
+auto-delete-branches = false
+auto-merge = false
+modify-workflows = false        # CI hardening goes through review, not bot edits
+escalation = "open an issue, do not spam PR comments"

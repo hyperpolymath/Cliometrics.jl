@@ -1,14 +1,37 @@
 # SPDX-License-Identifier: MPL-2.0
 # STATE.a2ml — Project state checkpoint
-# Converted from STATE.scm on 2026-03-15
+# Converted from STATE.scm on 2026-03-15; refreshed 2026-06-13
 
 [metadata]
 project = "Cliometrics.jl"
-version = "0.1.0"
-last-updated = "2026-03-15"
+version = "0.2.0"
+last-updated = "2026-06-13"
 status = "active"
 
 [project-context]
 name = "Cliometrics.jl"
-completion-percentage = 0
-phase = "In development"
+phase = "active development"
+language = "Julia 1.9+"
+license = "MPL-2.0"
+author = "Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"
+
+[build]
+test-command = "julia --project=. -e 'using Pkg; Pkg.instantiate(); Pkg.test()'"
+test-status = "passing"
+# Test suite structure (from test/runtests.jl):
+# Main @testset suites: Growth Rate Calculations, Solow Residual, Growth Decomposition,
+# Convergence Analysis, Institutional Quality Index, Quantify Institutions,
+# Historical Series Cleaning, Interpolate Missing Years, Load Historical Data,
+# Compare Historical Trajectories, Counterfactual Scenario, Estimate Treatment Effect,
+# plus error-case and edge-case testsets; includes e2e_test.jl + property_test.jl
+ci-matrix = "Julia 1.10 + 1.11 on ubuntu-latest; Julia 1.11 on macos-latest"
+
+[features]
+growth-accounting = "implemented (calculate_growth_rates, solow_residual, decompose_growth)"
+convergence-analysis = "implemented (convergence_analysis; sigma-convergence planned v0.2.0)"
+institutional-quality = "implemented (institutional_quality_index, quantify_institutions)"
+historical-data = "implemented (load_historical_data, clean_historical_series, interpolate_missing_years)"
+counterfactual = "implemented (counterfactual_scenario, estimate_treatment_effect)"
+ffi-zig = "present (ffi/zig/); ABI documented in ABI-FFI-README.md"
+docs = "Documenter.jl structure present; rendered via casket-pages CI"
+extensions = "12 optional hardware-backend extensions (CUDA/ROCm/Metal/TPU/NPU/DSP/FPGA/VPU/QPU/PPU/Math/Crypto)"

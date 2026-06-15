@@ -849,19 +849,28 @@ function estimate_treatment_effect(data::DataFrame, variable::Symbol,
 end
 
 # ============================================================================
-# Backend Abstraction (AcceleratorGate coprocessor dispatch) — PARKED
+# Backend Abstraction (AcceleratorGate coprocessor dispatch)
 # ============================================================================
 #
-# The coprocessor acceleration layer (src/backends/abstract.jl,
-# src/coprocessors/*.jl) and the accelerator package extensions
-# (ext/Cliometrics*Ext.jl) are written against the AcceleratorGate.jl
-# shared-dispatch API, which is not yet a published/registered package (its
-# Project.toml UUID was a placeholder, so `Pkg.instantiate()` could never
-# resolve it). Loading them is therefore disabled: the unconditional
-# `include(...)` calls here and the [deps]/[weakdeps]/[extensions] entries in
-# Project.toml have been removed so the core package instantiates and tests
-# cleanly. The source is retained in-tree, unmodified, to be re-wired once
-# AcceleratorGate is real. See the AcceleratorGate tracking issue and the
-# deferred item in .machine_readable/.../STATE.a2ml.
+# This layer is written against AcceleratorGate.jl, the estate's shared
+# coprocessor-dispatch package. AcceleratorGate is not yet published/registered,
+# so a minimal vendored stub at stub/AcceleratorGate supplies its API surface
+# (see Project.toml + .github/workflows/ci.yml, which `Pkg.develop`s the stub).
+# Replace the stub with the real package once it is available — see
+# hyperpolymath/Cliometrics.jl#17 and the deferred item in
+# .machine_readable/6a2/STATE.a2ml.
+
+include("backends/abstract.jl")
+
+# Coprocessor extensions (overload hooks from abstract.jl)
+include("coprocessors/tpu.jl")
+include("coprocessors/npu.jl")
+include("coprocessors/fpga.jl")
+include("coprocessors/vpu.jl")
+include("coprocessors/qpu.jl")
+include("coprocessors/dsp.jl")
+include("coprocessors/ppu.jl")
+include("coprocessors/math.jl")
+include("coprocessors/crypto.jl")
 
 end # module Cliometrics

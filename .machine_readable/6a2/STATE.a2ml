@@ -4,11 +4,32 @@
 
 [metadata]
 project = "Cliometrics.jl"
-version = "0.1.0"
-last-updated = "2026-03-15"
+version = "0.2.0"
+last-updated = "2026-06-15"
 status = "active"
 
 [project-context]
 name = "Cliometrics.jl"
 completion-percentage = 0
 phase = "In development"
+
+[deferred.accelerator-gate]
+summary = "Coprocessor acceleration layer PARKED — depends on the unpublished AcceleratorGate.jl"
+detail = """
+src/backends/abstract.jl, src/coprocessors/*.jl and ext/Cliometrics*Ext.jl are
+written against the AcceleratorGate.jl shared coprocessor-dispatch API. That
+package is not yet published/registered: its Project.toml UUID
+(59f742c7-270d-4a76-95d4-a853ae16cc71) and the per-accelerator [weakdeps] UUIDs
+(TPUCompute 1111..., NPUAccel 2222..., DSPLibs 3333..., FPGASynthesis 4444...,
+VPURuntime 5555..., QPUInterface 6666..., PPUCompute 7777..., MathAccel 8888...,
+CryptoAccel 9999...) were placeholders, so Pkg.instantiate() could never resolve
+them and CI failed before running any tests.
+"""
+action = """
+Removed the AcceleratorGate [deps] entry, the [weakdeps]/[extensions] tables and
+the [compat] pin from Project.toml, plus the unconditional include(...) calls in
+src/Cliometrics.jl, so the core package instantiates and the 124 tests run
+cleanly. The accelerator source is retained in-tree, unmodified, to be re-wired.
+"""
+blocked-on = "Publication/registration of AcceleratorGate.jl (shared estate dependency; same placeholder pattern fixed in Causals.jl#19)"
+re-wire = "Restore the AcceleratorGate dep + [weakdeps]/[extensions] + the include block once AcceleratorGate is a real package."

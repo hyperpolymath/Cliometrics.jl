@@ -1,0 +1,98 @@
+# SPDX-License-Identifier: MPL-2.0
+# Intentfile (A2ML Canonical) — north-star contractile for Cliometrics.jl
+# Author: Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+#
+# Paired runner: intend.ncl
+
+[metadata]
+name = "Cliometrics.jl-intentfile"
+project = "Cliometrics.jl"
+schema_version = "1.0"
+# Verb:          intend
+#
+# Semantics: North-star contractile. Declares BOTH concrete committed
+#            next-actions AND horizon aspirations. Non-gating — a report,
+#            not a gate (see Mustfile for hard gates).
+#              [[intents]] — "we WILL do this; track progress"
+#                            status: declared → in_progress → done | deferred | retired
+#              [[wishes]]  — "we WISH this were true; revisit later"
+#                            grouped by horizon: near / mid / far.
+#
+# NOTE (2026-06-13): rewritten for Cliometrics.jl. The file the estate branch
+# carried was the un-substituted rsr-template-repo Intentfile (its intents
+# were "repo-initialization / contractile-completeness for the template").
+
+@abstract:
+North-star for Cliometrics.jl: quantitative economic history in Julia.
+Applies econometric and statistical methods to historical economic phenomena —
+growth accounting, convergence analysis, institutional quality measurement,
+and counterfactual modeling — with a Zig FFI layer for performance-critical
+data paths and Documenter.jl docs.
+@end
+
+## Purpose
+
+Cliometrics.jl provides Julia tools for quantitative economic history:
+- Historical data loading and cleaning (CSV, interpolation, gap-filling)
+- Growth accounting: Solow residual / TFP decomposition
+- Convergence analysis (beta-convergence, half-life calculations)
+- Institutional quality indices (composite with custom weights)
+- Counterfactual / treatment-effect estimation (DiD)
+- Zig FFI layer for performance-critical data paths (ffi/)
+
+## Anti-Purpose
+
+Cliometrics.jl is NOT:
+- a general economics simulation framework
+- a replacement for full econometrics packages (StatsModels, etc.)
+- a real-time or live-data pipeline (batch/historical data only)
+- a web service or API server
+
+## If In Doubt
+
+Sensitive areas — ask before changing: `src/Cliometrics.jl` (main module
+logic), `ffi/` (Zig FFI ABI), `Project.toml` (dependency pinning),
+`.claude/CLAUDE.md`.
+
+## Committed Next-Actions
+
+### sigma-convergence
+- description: implement sigma-convergence testing (cross-sectional GDP variance over time)
+- probe: grep -q 'sigma_convergence' src/Cliometrics.jl
+- status: declared
+- notes: README marks it planned for v0.2.0
+
+### conditional-convergence
+- description: conditional convergence with control variables
+- probe: grep -q 'conditional_convergence' src/Cliometrics.jl
+- status: declared
+
+### long-run-growth-trend
+- description: long-run growth trend analysis (planned v0.2.0)
+- probe: grep -q 'long_run_growth' src/Cliometrics.jl
+- status: declared
+
+## Wishes
+
+### Near Horizon
+#### docs-site
+- description: rendered Documenter.jl docs deployed via GitHub Pages
+- horizon: near
+- status: declared
+
+### Mid Horizon
+#### benchmarks
+- description: measured performance benchmarks for Zig FFI paths vs pure-Julia fallback
+- horizon: mid
+- status: declared
+
+#### panel-data
+- description: panel data estimators (fixed effects, random effects) for cross-country data
+- horizon: mid
+- status: declared
+
+### Far Horizon
+#### maddison-integration
+- description: direct Maddison Project Database loader
+- horizon: far
+- status: declared

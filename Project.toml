@@ -4,24 +4,29 @@ authors = ["Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"]
 version = "0.2.0"
 license = "MPL-2.0"
 
-# The coprocessor acceleration layer (src/backends, src/coprocessors,
-# ext/Cliometrics*Ext.jl) is written against AcceleratorGate.jl, the estate's
-# shared coprocessor-dispatch package, which is not yet published/registered.
-# Until it is, a minimal vendored stub lives at stub/AcceleratorGate and is
-# supplied to CI via `Pkg.develop(path="stub/AcceleratorGate")` (see
-# .github/workflows/ci.yml). The previous fake-UUID [weakdeps]/[extensions]
-# tables for never-published accelerator packages have been dropped (they made
-# Pkg.instantiate() fail); the GPU/accelerator extension files remain in ext/
-# to be re-wired against real packages later. See Cliometrics.jl#17.
-
 [deps]
-AcceleratorGate = "864bd76c-64a8-41b8-be27-f0832a2936a3"
 Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
+[weakdeps]
+# Real packages registered in Julia General registry:
+AMDGPU = "21141c5a-9bdb-4563-92ae-f87d6854732e"
+CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+KernelAbstractions = "63c18a36-062a-441e-b654-da1e3ab1ce7c"
+Metal = "dde4c033-4e86-420c-a63e-0dd931031962"
+# Removed: CryptoAccel, DSPLibs, FPGASynthesis, MathAccel, NPUAccel, PPUCompute,
+# QPUInterface, TPUCompute, VPURuntime — all had placeholder/fake UUIDs and are not
+# registered in Julia General; their extensions are kept in ext/ as stubs but
+# excluded from the project graph until real packages are available.
+
+[extensions]
+CliometricsCUDAExt = ["CUDA", "KernelAbstractions"]
+CliometricsROCmExt = ["AMDGPU", "KernelAbstractions"]
+CliometricsMetalExt = ["Metal", "KernelAbstractions"]
 
 [compat]
 julia = "1.9"

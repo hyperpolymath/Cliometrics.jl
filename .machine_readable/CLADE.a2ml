@@ -3,6 +3,9 @@
 # See: https://github.com/hyperpolymath/gv-clade-index
 
 [identity]
+name = "Cliometrics.jl-clade"
+project = "Cliometrics.jl"
+schema_version = "1.0"
 uuid = "1c0e400c-ac2f-5a80-9b06-4fc03a671509"
 primary-forge = "github"
 primary-owner = "hyperpolymath"

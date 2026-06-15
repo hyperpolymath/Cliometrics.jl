@@ -1,0 +1,43 @@
+// SPDX-License-Identifier: MPL-2.0
+// SPDX-FileCopyrightText: 2026 Jonathan D.A. Jewell
+= Bot directives — Cliometrics.jl
+:toc:
+
+== Purpose
+
+Per-repo directives for automated agents operating on
+`hyperpolymath/Cliometrics.jl`. These files tell bots what this repository
+considers safe, what is forbidden, and which findings are already
+adjudicated, so automated runs do not relitigate settled decisions or
+touch protected surfaces.
+
+== Precedence
+
+. Maintainer instruction (see `MAINTAINERS.adoc`) — always wins.
+. These directives.
+. Bot built-in defaults.
+
+== Files
+
+Estate-standard trio (net-new 2026-06-13):
+
+* `hypatia.a2ml` — Hypatia scanner config pointers + pre-adjudicated
+  finding classes (missing-SPDX advisory, Zig FFI unsafe boundary).
+* `gitbot-fleet.a2ml` — fleet roster, branch policy, never-touch paths.
+* `git-private-farm.a2ml` — `.git-private-farm` propagation contract;
+  propagation is **live** here (the repo ships
+  `.github/workflows/instant-sync.yml`; secret: `FARM_DISPATCH_TOKEN`).
+
+Agent-instruction methodology files (pre-existing, retained):
+
+* `methodology.a2ml` — default mode, invariants, ring ceiling
+* `coverage.a2ml` — session coverage tracking
+* `debt.a2ml` — meander debt between sessions
+
+== Repo-specific ground rules (summary)
+
+* Cliometrics.jl is a Julia library for quantitative economic history.
+* Semantic-authority surfaces are bot-off-limits: `src/Cliometrics.jl`,
+  `ffi/zig/`, `ABI-FFI-README.md`, `.claude/CLAUDE.md`.
+* CI green precedes merge; bots never auto-merge and never delete
+  branches. Escalation channel is an issue, not PR-comment spam.

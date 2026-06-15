@@ -850,6 +850,9 @@ end
 
 # ============================================================================
 # Backend Abstraction (AcceleratorGate coprocessor dispatch)
+# NOTE: AcceleratorGate-dependent backend/coprocessor files are loaded only
+# when AcceleratorGate is available (via extensions). They are not included
+# in the core module to avoid a dependency on an unregistered package.
 # ============================================================================
 #
 # This layer is written against AcceleratorGate.jl, the estate's shared
@@ -859,18 +862,5 @@ end
 # Replace the stub with the real package once it is available — see
 # hyperpolymath/Cliometrics.jl#17 and the deferred item in
 # .machine_readable/6a2/STATE.a2ml.
-
-include("backends/abstract.jl")
-
-# Coprocessor extensions (overload hooks from abstract.jl)
-include("coprocessors/tpu.jl")
-include("coprocessors/npu.jl")
-include("coprocessors/fpga.jl")
-include("coprocessors/vpu.jl")
-include("coprocessors/qpu.jl")
-include("coprocessors/dsp.jl")
-include("coprocessors/ppu.jl")
-include("coprocessors/math.jl")
-include("coprocessors/crypto.jl")
 
 end # module Cliometrics

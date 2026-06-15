@@ -1,0 +1,8 @@
+name = "AcceleratorGate"
+uuid = "864bd76c-64a8-41b8-be27-f0832a2936a3"
+authors = ["Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>"]
+version = "0.0.1"
+license = "MPL-2.0"
+
+[compat]
+julia = "1.9"

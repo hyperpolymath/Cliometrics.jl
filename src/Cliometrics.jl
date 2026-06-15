@@ -854,5 +854,13 @@ end
 # when AcceleratorGate is available (via extensions). They are not included
 # in the core module to avoid a dependency on an unregistered package.
 # ============================================================================
+#
+# This layer is written against AcceleratorGate.jl, the estate's shared
+# coprocessor-dispatch package. AcceleratorGate is not yet published/registered,
+# so a minimal vendored stub at stub/AcceleratorGate supplies its API surface
+# (see Project.toml + .github/workflows/ci.yml, which `Pkg.develop`s the stub).
+# Replace the stub with the real package once it is available — see
+# hyperpolymath/Cliometrics.jl#17 and the deferred item in
+# .machine_readable/6a2/STATE.a2ml.
 
 end # module Cliometrics

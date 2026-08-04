@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
+# This workflow is managed by gh actions-lock.
 name: CI
 permissions:
   contents: read
@@ -24,11 +25,11 @@ jobs:
           - julia-version: '1.11'
             os: macos-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: julia-actions/setup-julia@fa02766e078afaaf09b14210362cee14137e6a32 # v3.0.2
+      - uses: actions/checkout@v7.0.1
+      - uses: julia-actions/setup-julia@v3.0.2
         with:
           version: ${{ matrix.julia-version }}
-      - uses: julia-actions/cache@b7788abd52452d5bc033d69796e110d9906af4ab # v2
+      - uses: julia-actions/cache@v3.2.0
       - name: Install, build, test
         # AcceleratorGate.jl is not yet published; develop the vendored stub at
         # stub/AcceleratorGate (registry-free, works on 1.10 and 1.11) before

@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
+# This workflow is managed by gh actions-lock.
 name: Mirror to Git Forges
 on:
   push:
@@ -12,10 +13,10 @@ jobs:
     timeout-minutes: 15
     if: vars.GITLAB_MIRROR_ENABLED == 'true' && secrets.GITLAB_SSH_KEY != ''
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+      - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.GITLAB_SSH_KEY }}
       - name: Mirror to GitLab
@@ -28,10 +29,10 @@ jobs:
     timeout-minutes: 15
     if: vars.BITBUCKET_MIRROR_ENABLED == 'true' && secrets.BITBUCKET_SSH_KEY != ''
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+      - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.BITBUCKET_SSH_KEY }}
       - name: Mirror to Bitbucket
@@ -44,10 +45,10 @@ jobs:
     timeout-minutes: 15
     if: vars.CODEBERG_MIRROR_ENABLED == 'true' && secrets.CODEBERG_SSH_KEY != ''
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+      - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.CODEBERG_SSH_KEY }}
       - name: Mirror to Codeberg
@@ -60,10 +61,10 @@ jobs:
     timeout-minutes: 15
     if: vars.SOURCEHUT_MIRROR_ENABLED == 'true' && secrets.SOURCEHUT_SSH_KEY != ''
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+      - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.SOURCEHUT_SSH_KEY }}
       - name: Mirror to SourceHut
@@ -76,10 +77,10 @@ jobs:
     timeout-minutes: 15
     if: vars.DISROOT_MIRROR_ENABLED == 'true' && secrets.DISROOT_SSH_KEY != ''
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+      - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.DISROOT_SSH_KEY }}
       - name: Mirror to Disroot
@@ -92,10 +93,10 @@ jobs:
     timeout-minutes: 15
     if: vars.GITEA_MIRROR_ENABLED == 'true' && secrets.GITEA_SSH_KEY != ''
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
+      - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.GITEA_SSH_KEY }}
       - name: Mirror to Gitea
@@ -108,11 +109,11 @@ jobs:
     timeout-minutes: 15
     if: vars.RADICLE_MIRROR_ENABLED == 'true' && secrets.RADICLE_KEY != ''
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Setup Rust
-        uses: dtolnay/rust-toolchain@2c7215f132e9ebf062739d9130488b56d53c060c # stable
+        uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: stable
       - name: Install Radicle

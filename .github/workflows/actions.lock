@@ -44,9 +44,7 @@ workflows:
         - 'actions/checkout@v7.0.1'
         - 'github/codeql-action@v4.37.3'
         - 'ossf/scorecard-action@v2.4.4'
-    '.github/workflows/secret-scanner.yml':
-        - 'actions/checkout@v7.0.1'
-        - 'trufflesecurity/trufflehog@v3.96.0'
+    '.github/workflows/secret-scanner.yml': []
 dependencies:
     'actions/cache@v6.1.0':
         ref: 'v6.1.0'
@@ -150,11 +148,6 @@ dependencies:
         commit: 'sha1-28959ce8df70de7be546dd1250a005dd32156697'
         owner_id: 18365890
         repo_id: 220359305
-    'trufflesecurity/trufflehog@v3.96.0':
-        ref: 'v3.96.0'
-        commit: 'sha1-6f3c981e7b77f235fd2702dd74af25fc4b72bf11'
-        owner_id: 79229934
-        repo_id: 77726177
     'webfactory/ssh-agent@v0.10.0':
         ref: 'v0.10.0'
         commit: 'sha1-e83874834305fe9a4a2997156cb26c5de65a8555'

@@ -41,7 +41,7 @@ workflows:
         - 'dtolnay/rust-toolchain@stable'
         - 'webfactory/ssh-agent@v0.10.0'
     '.github/workflows/push-email-notify.yml':
-        - 'dawidd6/action-send-mail@v3.12.0'
+        - 'hyperpolymath/smtp-notify-action@v0.1.0'
     '.github/workflows/scorecard.yml':
         - 'actions/checkout@v7.0.1'
         - 'github/codeql-action@v4.37.3'
@@ -90,11 +90,6 @@ dependencies:
         repo_id: 496012378
         uses:
             - 'actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f'
-    'dawidd6/action-send-mail@v3.12.0':
-        ref: 'v3.12.0'
-        commit: 'sha1-12335b969ae3fb71bee5f2c6b829744261aec34c'
-        owner_id: 9713907
-        repo_id: 222439721
     'dependabot/fetch-metadata@v3.1.0':
         ref: 'v3.1.0'
         commit: 'sha1-25dd0e34f4fe68f24cc83900b1fe3fe149efef98'
@@ -135,6 +130,11 @@ dependencies:
         commit: 'sha1-89f3c2702f4f650a92aa7411502f38da06abd562'
         owner_id: 6759885
         repo_id: 1275650185
+    'hyperpolymath/smtp-notify-action@v0.1.0':
+        ref: 'v0.1.0'
+        commit: 'sha1-1b3b752d39a4fe4c0f28f10905e4608789d3e050'
+        owner_id: 6759885
+        repo_id: 1352485172
     'julia-actions/cache@v3.3.0':
         ref: 'v3.3.0'
         commit: 'sha1-a7bed9df697e5d7309d68afe7542a87621a8b6c8'

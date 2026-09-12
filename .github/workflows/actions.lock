@@ -23,7 +23,7 @@ workflows:
         - 'dependabot/fetch-metadata@v3.1.0'
     '.github/workflows/dogfood-gate.yml':
         - 'actions/checkout@v7.0.1'
-        - 'hyperpolymath/a2ml-ecosystem@main'
+        - 'hyperpolymath/deed-ecosystem@main'
         - 'hyperpolymath/k9-ecosystem@main'
     '.github/workflows/governance.yml': []
     '.github/workflows/hypatia-scan.yml':

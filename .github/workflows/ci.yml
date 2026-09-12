@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MPL-2.0
 # This workflow is managed by gh actions-lock.
+# This workflow is managed by gh actions-lock.
 name: CI
 permissions:
   contents: read
@@ -29,7 +30,7 @@ jobs:
       - uses: julia-actions/setup-julia@v3.0.2
         with:
           version: ${{ matrix.julia-version }}
-      - uses: julia-actions/cache@v3.2.0
+      - uses: julia-actions/cache@v3.3.0
       - name: Install, build, test
         # AcceleratorGate.jl is not yet published; develop the vendored stub at
         # stub/AcceleratorGate (registry-free, works on 1.10 and 1.11) before

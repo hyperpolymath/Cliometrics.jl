@@ -48,8 +48,8 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 3
 
-  # Nix flakes
-  - package-ecosystem: "nix"
+  # Guix flakes
+  - package-ecosystem: "guix"
     directory: "/"
     schedule:
       interval: "weekly"

@@ -17,6 +17,7 @@ concurrency:
   cancel-in-progress: true
 permissions:
   contents: read
+  security-events: write
 jobs:
   analyze:
     runs-on: ubuntu-latest

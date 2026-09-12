@@ -25,6 +25,7 @@ jobs:
     env:
       FARM_DISPATCH_TOKEN: ${{ secrets.FARM_DISPATCH_TOKEN }}
     steps:
+      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1
       - name: Trigger Propagation
         if: env.FARM_DISPATCH_TOKEN != ''
         uses: peter-evans/repository-dispatch@v4.0.1

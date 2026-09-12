@@ -40,6 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1
       - name: Send push notification email
         uses: hyperpolymath/smtp-notify-action@v0.2.0 # NOSONAR — pin authority is actions.lock (sha1-ede1191ef6ff3ac02c4f4d9efdf837ee517e11d7)
         with:

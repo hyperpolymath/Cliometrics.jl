@@ -1,5 +1,5 @@
-# SPDX-License-Identifier: MPL-2.0
 # This workflow is managed by gh actions-lock.
+# SPDX-License-Identifier: MPL-2.0
 # This workflow is managed by gh actions-lock.
 # Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
 #
@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
       - name: Check for A2ML files
         id: detect
         run: |
@@ -35,7 +37,7 @@ jobs:
           fi
       - name: Validate A2ML manifests
         if: steps.detect.outputs.count > 0
-        uses: hyperpolymath/a2ml-ecosystem/validate-action@main
+        uses: hyperpolymath/deed-ecosystem/validate-action@main
         with:
           path: '.'
           strict: 'false'
@@ -65,6 +67,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
       - name: Check for K9 files
         id: detect
         run: |
@@ -110,6 +114,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
       - name: Scan for invisible characters
         id: lint
         run: |
@@ -199,6 +205,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
       - name: Check for Groove manifest
         id: groove
         run: |
@@ -256,6 +264,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
       - name: Generate dogfooding scorecard
         run: |
           SCORE=0

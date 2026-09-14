@@ -17,15 +17,14 @@ workflows:
         - 'julia-actions/cache@v3.3.0'
         - 'julia-actions/setup-julia@v3.0.2'
     '.github/workflows/codeql.yml':
-        - 'actions/checkout@v7.0.1'
-        - 'github/codeql-action@v4.37.7'
+        - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
+        - 'github/codeql-action@cdf488f595d80d6e07e03d4674febd5ab45fa938'
     '.github/workflows/dependabot-automerge.yml':
         - 'dependabot/fetch-metadata@v3.1.0'
     '.github/workflows/dogfood-gate.yml':
         - 'actions/checkout@v7.0.1'
-        - 'hyperpolymath/a2ml-ecosystem@main'
+        - 'hyperpolymath/deed-ecosystem@main'
         - 'hyperpolymath/k9-ecosystem@main'
-    '.github/workflows/governance.yml': []
     '.github/workflows/hypatia-scan.yml':
         - 'actions/checkout@v7.0.1'
         - 'actions/github-script@v9.0.0'
@@ -34,8 +33,6 @@ workflows:
         - 'github/codeql-action@v4.37.7'
     '.github/workflows/instant-sync.yml':
         - 'peter-evans/repository-dispatch@v4.0.1'
-    '.github/workflows/label-triage.yml': []
-    '.github/workflows/labels.yml': []
     '.github/workflows/mirror.yml':
         - 'actions/checkout@v7.0.1'
         - 'dtolnay/rust-toolchain@stable'
@@ -44,9 +41,8 @@ workflows:
         - 'hyperpolymath/smtp-notify-action@v0.2.0'
     '.github/workflows/scorecard.yml':
         - 'actions/checkout@v7.0.1'
-        - 'github/codeql-action@v4.37.3'
+        - 'github/codeql-action@v4.37.9'
         - 'ossf/scorecard-action@v2.4.4'
-    '.github/workflows/secret-scanner.yml': []
 dependencies:
     'actions/cache@v6.1.0':
         ref: 'v6.1.0'
@@ -55,6 +51,11 @@ dependencies:
         repo_id: 215566462
     'actions/checkout@v7.0.1':
         ref: 'v7.0.1'
+        commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
+        owner_id: 44036562
+        repo_id: 197814629
+    'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1':
+        ref: '3d3c42e5aac5ba805825da76410c181273ba90b1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
@@ -97,7 +98,7 @@ dependencies:
         repo_id: 371068214
     'dtolnay/rust-toolchain@stable':
         ref: 'stable'
-        commit: 'sha1-4cda84d5c5c54efe2404f9d843567869ab1699d4'
+        commit: 'sha1-6bed0761d98439e5a578e2877258200ad565ba87'
         owner_id: 1940490
         repo_id: 260749683
     'erlef/setup-beam@v1.24.1':
@@ -105,14 +106,19 @@ dependencies:
         commit: 'sha1-54075bcc5e249e4758d363f27d099f55d843f124'
         owner_id: 47606891
         repo_id: 331103973
-    'github/codeql-action@v4.37.3':
-        ref: 'v4.37.3'
-        commit: 'sha1-e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81'
-        owner_id: 9919
-        repo_id: 259445878
     'github/codeql-action@v4.37.7':
         ref: 'v4.37.7'
         commit: 'sha1-ff2f1c621b7f889edc0d3c761ac2e6a3f8cdb0dd'
+        owner_id: 9919
+        repo_id: 259445878
+    'github/codeql-action@v4.37.9':
+        ref: 'v4.37.9'
+        commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
+        owner_id: 9919
+        repo_id: 259445878
+    'github/codeql-action@cdf488f595d80d6e07e03d4674febd5ab45fa938':
+        ref: 'cdf488f595d80d6e07e03d4674febd5ab45fa938'
+        commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
         owner_id: 9919
         repo_id: 259445878
     'haskell-actions/setup@v2.12.0':
@@ -120,14 +126,14 @@ dependencies:
         commit: 'sha1-6037f33647c3f17758a2356c80fc4a53d7e0685d'
         owner_id: 75048950
         repo_id: 623796603
-    'hyperpolymath/a2ml-ecosystem@main':
+    'hyperpolymath/deed-ecosystem@main':
         ref: 'main'
-        commit: 'sha1-aa4b836bd969df2bc58128cb8e3d20bbc88d5e79'
+        commit: 'sha1-f7a40a4d5cc82b2e73f861119baa6818d77a448d'
         owner_id: 6759885
         repo_id: 1275649586
     'hyperpolymath/k9-ecosystem@main':
         ref: 'main'
-        commit: 'sha1-89f3c2702f4f650a92aa7411502f38da06abd562'
+        commit: 'sha1-2155aa26a21758f2ba119f61bc7e0e1981c106fb'
         owner_id: 6759885
         repo_id: 1275650185
     'hyperpolymath/smtp-notify-action@v0.2.0':

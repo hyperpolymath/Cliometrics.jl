@@ -1,5 +1,5 @@
-# SPDX-License-Identifier: MPL-2.0
 # This workflow is managed by gh actions-lock.
+# SPDX-License-Identifier: MPL-2.0
 # This workflow is managed by gh actions-lock.
 name: Scorecards supply-chain security
 
@@ -12,7 +12,7 @@ permissions: read-all
 
 jobs:
   analysis:
-    uses: hyperpolymath/standards/.github/workflows/scorecard-reusable.yml@571cc734cd69fb846032ec77a662aa8ee4fc32cd
+    uses: hyperpolymath/standards/.github/workflows/scorecard-reusable.yml@d200ddcafb7f7336b0ae0353ea1504153876d6f2
     permissions:
       contents: read
       security-events: write
@@ -27,6 +27,6 @@ jobs:
           results_file: results.sarif
           results_format: sarif
       - name: Upload results
-        uses: github/codeql-action/upload-sarif@v4.37.3
+        uses: github/codeql-action/upload-sarif@v4.37.9
         with:
           sarif_file: results.sarif

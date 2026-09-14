@@ -1,6 +1,5 @@
 # This workflow is managed by gh actions-lock.
 # SPDX-License-Identifier: MPL-2.0
-# This workflow is managed by gh actions-lock.
 name: Scorecards supply-chain security
 
 on:
@@ -17,16 +16,3 @@ jobs:
       contents: read
       security-events: write
       id-token: write
-    steps:
-      - uses: actions/checkout@v7.0.1
-        with:
-          persist-credentials: false
-      - name: Run Scorecard
-        uses: ossf/scorecard-action@v2.4.4
-        with:
-          results_file: results.sarif
-          results_format: sarif
-      - name: Upload results
-        uses: github/codeql-action/upload-sarif@v4.37.9
-        with:
-          sarif_file: results.sarif

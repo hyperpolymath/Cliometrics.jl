@@ -21,6 +21,7 @@ workflows:
         - 'github/codeql-action@cdf488f595d80d6e07e03d4674febd5ab45fa938'
     '.github/workflows/dependabot-automerge.yml':
         - 'dependabot/fetch-metadata@v3.1.0'
+        - 'step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1'
     '.github/workflows/dogfood-gate.yml':
         - 'actions/checkout@v7.0.1'
         - 'hyperpolymath/deed-ecosystem@main'
@@ -31,14 +32,18 @@ workflows:
         - 'actions/upload-artifact@v7.0.1'
         - 'erlef/setup-beam@v1.24.1'
         - 'github/codeql-action@v4.37.7'
+        - 'step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1'
     '.github/workflows/instant-sync.yml':
         - 'peter-evans/repository-dispatch@v4.0.1'
+        - 'step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1'
     '.github/workflows/mirror.yml':
         - 'actions/checkout@v7.0.1'
         - 'dtolnay/rust-toolchain@stable'
+        - 'step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1'
         - 'webfactory/ssh-agent@v0.10.0'
     '.github/workflows/push-email-notify.yml':
         - 'hyperpolymath/smtp-notify-action@v0.2.0'
+        - 'step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1'
     '.github/workflows/scorecard.yml':
         - 'actions/checkout@v7.0.1'
         - 'github/codeql-action@v4.37.9'
@@ -49,13 +54,13 @@ dependencies:
         commit: 'sha1-55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
         owner_id: 44036562
         repo_id: 215566462
-    'actions/checkout@v7.0.1':
-        ref: 'v7.0.1'
+    'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1':
+        ref: '3d3c42e5aac5ba805825da76410c181273ba90b1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
-    'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1':
-        ref: '3d3c42e5aac5ba805825da76410c181273ba90b1'
+    'actions/checkout@v7.0.1':
+        ref: 'v7.0.1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
@@ -106,6 +111,11 @@ dependencies:
         commit: 'sha1-54075bcc5e249e4758d363f27d099f55d843f124'
         owner_id: 47606891
         repo_id: 331103973
+    'github/codeql-action@cdf488f595d80d6e07e03d4674febd5ab45fa938':
+        ref: 'cdf488f595d80d6e07e03d4674febd5ab45fa938'
+        commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
+        owner_id: 9919
+        repo_id: 259445878
     'github/codeql-action@v4.37.7':
         ref: 'v4.37.7'
         commit: 'sha1-ff2f1c621b7f889edc0d3c761ac2e6a3f8cdb0dd'
@@ -116,11 +126,6 @@ dependencies:
         commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
         owner_id: 9919
         repo_id: 259445878
-    'github/codeql-action@cdf488f595d80d6e07e03d4674febd5ab45fa938':
-        ref: 'cdf488f595d80d6e07e03d4674febd5ab45fa938'
-        commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
-        owner_id: 9919
-        repo_id: 259445878
     'haskell-actions/setup@v2.12.0':
         ref: 'v2.12.0'
         commit: 'sha1-6037f33647c3f17758a2356c80fc4a53d7e0685d'
@@ -128,7 +133,7 @@ dependencies:
         repo_id: 623796603
     'hyperpolymath/deed-ecosystem@main':
         ref: 'main'
-        commit: 'sha1-f7a40a4d5cc82b2e73f861119baa6818d77a448d'
+        commit: 'sha1-f9d999b60cb5f383679ea19912bcdc49c944973a'
         owner_id: 6759885
         repo_id: 1275649586
     'hyperpolymath/k9-ecosystem@main':
@@ -161,6 +166,11 @@ dependencies:
         commit: 'sha1-28959ce8df70de7be546dd1250a005dd32156697'
         owner_id: 18365890
         repo_id: 220359305
+    'step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1':
+        ref: 'v2.21.1'
+        commit: 'sha1-e14015d583714f6e62063499dc959a02595150a1'
+        owner_id: 88700172
+        repo_id: 422287306
     'webfactory/ssh-agent@v0.10.0':
         ref: 'v0.10.0'
         commit: 'sha1-e83874834305fe9a4a2997156cb26c5de65a8555'

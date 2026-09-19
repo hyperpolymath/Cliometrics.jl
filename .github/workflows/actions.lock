@@ -54,41 +54,49 @@ dependencies:
         commit: 'sha1-55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
         owner_id: 44036562
         repo_id: 215566462
+
     'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1':
         ref: '3d3c42e5aac5ba805825da76410c181273ba90b1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
+
     'actions/checkout@v7.0.1':
         ref: 'v7.0.1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
+
     'actions/configure-pages@v6.0.0':
         ref: 'v6.0.0'
         commit: 'sha1-45bfe0192ca1faeb007ade9deae92b16b8254a0d'
         owner_id: 44036562
         repo_id: 513659658
+
     'actions/deploy-pages@v5.0.0':
         ref: 'v5.0.0'
         commit: 'sha1-cd2ce8fcbc39b97be8ca5fce6e763baed58fa128'
         owner_id: 44036562
         repo_id: 438112499
+
     'actions/github-script@v9.0.0':
         ref: 'v9.0.0'
         commit: 'sha1-3a2844b7e9c422d3c10d287c895573f7108da1b3'
         owner_id: 44036562
         repo_id: 205262760
+
     'actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f':
         ref: 'v7.0.0'
         commit: 'sha1-bbbca2ddaa5d8feaa63e36b76fdaad77386f024f'
         owner_id: 44036562
         repo_id: 192625955
+
     'actions/upload-artifact@v7.0.1':
         ref: 'v7.0.1'
         commit: 'sha1-043fb46d1a93c77aae656e7c1c64a875d1fc6a0a'
         owner_id: 44036562
         repo_id: 192625955
+
     'actions/upload-pages-artifact@v5.0.0':
         ref: 'v5.0.0'
         commit: 'sha1-fc324d3547104276b827a68afc52ff2a11cc49c9'
@@ -96,81 +104,103 @@ dependencies:
         repo_id: 496012378
         uses:
             - 'actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f'
+
     'dependabot/fetch-metadata@v3.1.0':
         ref: 'v3.1.0'
         commit: 'sha1-25dd0e34f4fe68f24cc83900b1fe3fe149efef98'
         owner_id: 27347476
         repo_id: 371068214
+
     'dtolnay/rust-toolchain@stable':
         ref: 'stable'
         commit: 'sha1-6bed0761d98439e5a578e2877258200ad565ba87'
         owner_id: 1940490
         repo_id: 260749683
+
     'erlef/setup-beam@v1.24.1':
         ref: 'v1.24.1'
         commit: 'sha1-54075bcc5e249e4758d363f27d099f55d843f124'
         owner_id: 47606891
         repo_id: 331103973
+
+    'github/codeql-action@b96794f015dfd88f77b49b1c93e0fa7110f94c63':
+        ref: 'b96794f015dfd88f77b49b1c93e0fa7110f94c63'
+        commit: 'sha1-b96794f015dfd88f77b49b1c93e0fa7110f94c63'
+        owner_id: 9919
+        repo_id: 259445878
+
     'github/codeql-action@cdf488f595d80d6e07e03d4674febd5ab45fa938':
         ref: 'cdf488f595d80d6e07e03d4674febd5ab45fa938'
         commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
         owner_id: 9919
         repo_id: 259445878
+
     'github/codeql-action@v4.37.7':
         ref: 'v4.37.7'
         commit: 'sha1-ff2f1c621b7f889edc0d3c761ac2e6a3f8cdb0dd'
         owner_id: 9919
         repo_id: 259445878
+
     'github/codeql-action@v4.37.9':
         ref: 'v4.37.9'
         commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
         owner_id: 9919
         repo_id: 259445878
+
     'haskell-actions/setup@v2.12.0':
         ref: 'v2.12.0'
         commit: 'sha1-6037f33647c3f17758a2356c80fc4a53d7e0685d'
         owner_id: 75048950
         repo_id: 623796603
+
     'hyperpolymath/deed-ecosystem@main':
         ref: 'main'
         commit: 'sha1-f9d999b60cb5f383679ea19912bcdc49c944973a'
         owner_id: 6759885
         repo_id: 1275649586
+
     'hyperpolymath/k9-ecosystem@main':
         ref: 'main'
         commit: 'sha1-2155aa26a21758f2ba119f61bc7e0e1981c106fb'
         owner_id: 6759885
         repo_id: 1275650185
+
     'hyperpolymath/smtp-notify-action@v0.2.0':
         ref: 'v0.2.0'
         commit: 'sha1-ede1191ef6ff3ac02c4f4d9efdf837ee517e11d7'
         owner_id: 6759885
         repo_id: 1352485172
+
     'julia-actions/cache@v3.3.0':
         ref: 'v3.3.0'
         commit: 'sha1-a7bed9df697e5d7309d68afe7542a87621a8b6c8'
         owner_id: 53965732
         repo_id: 441908600
+
     'julia-actions/setup-julia@v3.0.2':
         ref: 'v3.0.2'
         commit: 'sha1-fa02766e078afaaf09b14210362cee14137e6a32'
         owner_id: 53965732
         repo_id: 202020219
+
     'ossf/scorecard-action@v2.4.4':
         ref: 'v2.4.4'
         commit: 'sha1-2d1146689b8cda280b9bc96326124645441f03bc'
         owner_id: 67707773
         repo_id: 421101922
+
     'peter-evans/repository-dispatch@v4.0.1':
         ref: 'v4.0.1'
         commit: 'sha1-28959ce8df70de7be546dd1250a005dd32156697'
         owner_id: 18365890
         repo_id: 220359305
+
     'step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1':
         ref: 'v2.21.1'
         commit: 'sha1-e14015d583714f6e62063499dc959a02595150a1'
         owner_id: 88700172
         repo_id: 422287306
+
     'webfactory/ssh-agent@v0.10.0':
         ref: 'v0.10.0'
         commit: 'sha1-e83874834305fe9a4a2997156cb26c5de65a8555'

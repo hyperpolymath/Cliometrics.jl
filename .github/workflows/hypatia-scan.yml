@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
         with:
@@ -102,7 +102,7 @@ jobs:
           echo "- High: $HIGH" >> $GITHUB_STEP_SUMMARY
           echo "- Medium: $MEDIUM" >> $GITHUB_STEP_SUMMARY
       - name: Upload findings artifact
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: hypatia-findings
           path: hypatia-findings.json
@@ -240,7 +240,7 @@ jobs:
 
 
            github.event.pull_request.head.repo.fork != true)
-        uses: github/codeql-action/upload-sarif@v4.38.2
+        uses: github/codeql-action/upload-sarif@v4.39.0
         with:
           sarif_file: hypatia.sarif
           # Distinct category so Hypatia results coexist with CodeQL's

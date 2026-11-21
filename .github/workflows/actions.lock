@@ -9,9 +9,9 @@ workflows:
         - 'actions/cache@v6.1.0'
         - 'actions/checkout@v7.0.1'
         - 'actions/configure-pages@v6.0.0'
-        - 'actions/deploy-pages@v5.0.0'
+        - 'actions/deploy-pages@v5.0.1'
         - 'actions/upload-pages-artifact@v5.0.0'
-        - 'haskell-actions/setup@v2.12.0'
+        - 'haskell-actions/setup@v2.12.1'
     '.github/workflows/ci.yml':
         - 'actions/checkout@v7.0.1'
         - 'julia-actions/cache@v3.5.0'
@@ -21,7 +21,7 @@ workflows:
         - 'github/codeql-action@v4.39.0'
     '.github/workflows/dependabot-automerge.yml':
         - 'dependabot/fetch-metadata@v3.1.0'
-        - 'step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25'
+        - 'step-security/harden-runner@v2.22.1'
     '.github/workflows/dogfood-gate.yml':
         - 'actions/checkout@v7.0.1'
         - 'hyperpolymath/deed-ecosystem@main'
@@ -33,24 +33,21 @@ workflows:
         - 'actions/upload-artifact@v7.0.2'
         - 'erlef/setup-beam@v1.24.1'
         - 'github/codeql-action@v4.39.0'
-        - 'step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25'
+        - 'step-security/harden-runner@v2.22.1'
     '.github/workflows/instant-sync.yml':
         - 'peter-evans/repository-dispatch@v4.0.1'
-        - 'step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25'
+        - 'step-security/harden-runner@v2.22.1'
     '.github/workflows/label-triage.yml': []
     '.github/workflows/labels.yml': []
     '.github/workflows/mirror.yml':
         - 'actions/checkout@v7.0.1'
         - 'dtolnay/rust-toolchain@stable'
-        - 'step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25'
+        - 'step-security/harden-runner@v2.22.1'
         - 'webfactory/ssh-agent@v0.10.0'
     '.github/workflows/push-email-notify.yml':
         - 'hyperpolymath/smtp-notify-action@v0.5.0'
-        - 'step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25'
-    '.github/workflows/scorecard.yml':
-        - 'actions/checkout@v7.0.1'
-        - 'github/codeql-action@v4.37.9'
-        - 'ossf/scorecard-action@v2.4.4'
+        - 'step-security/harden-runner@v2.22.1'
+    '.github/workflows/scorecard.yml': []
     '.github/workflows/secret-scanner.yml': []
 dependencies:
     'actions/cache@v6.1.0':
@@ -73,9 +70,9 @@ dependencies:
         commit: 'sha1-45bfe0192ca1faeb007ade9deae92b16b8254a0d'
         owner_id: 44036562
         repo_id: 513659658
-    'actions/deploy-pages@v5.0.0':
-        ref: 'v5.0.0'
-        commit: 'sha1-cd2ce8fcbc39b97be8ca5fce6e763baed58fa128'
+    'actions/deploy-pages@v5.0.1':
+        ref: 'v5.0.1'
+        commit: 'sha1-368f82528645a54fb793d4d04e342629a3f51346'
         owner_id: 44036562
         repo_id: 438112499
     'actions/github-script@v9.0.0':
@@ -115,19 +112,14 @@ dependencies:
         commit: 'sha1-54075bcc5e249e4758d363f27d099f55d843f124'
         owner_id: 47606891
         repo_id: 331103973
-    'github/codeql-action@v4.37.9':
-        ref: 'v4.37.9'
-        commit: 'sha1-cdf488f595d80d6e07e03d4674febd5ab45fa938'
-        owner_id: 9919
-        repo_id: 259445878
     'github/codeql-action@v4.39.0':
         ref: 'v4.39.0'
         commit: 'sha1-6f2ac81f5cd81fe351a197ba0b00d91d03cd2aee'
         owner_id: 9919
         repo_id: 259445878
-    'haskell-actions/setup@v2.12.0':
-        ref: 'v2.12.0'
-        commit: 'sha1-6037f33647c3f17758a2356c80fc4a53d7e0685d'
+    'haskell-actions/setup@v2.12.1':
+        ref: 'v2.12.1'
+        commit: 'sha1-0f8e8c99d88aeb3fbfd523f1ef2c6f762d10d64d'
         owner_id: 75048950
         repo_id: 623796603
     'hyperpolymath/deed-ecosystem@main':
@@ -155,17 +147,12 @@ dependencies:
         commit: 'sha1-da908477b5db94c10ffce8cfea9f2b3b9d5db687'
         owner_id: 53965732
         repo_id: 202020219
-    'ossf/scorecard-action@v2.4.4':
-        ref: 'v2.4.4'
-        commit: 'sha1-2d1146689b8cda280b9bc96326124645441f03bc'
-        owner_id: 67707773
-        repo_id: 421101922
     'peter-evans/repository-dispatch@v4.0.1':
         ref: 'v4.0.1'
         commit: 'sha1-28959ce8df70de7be546dd1250a005dd32156697'
         owner_id: 18365890
         repo_id: 220359305
-    'step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25':
+    'step-security/harden-runner@v2.22.1':
         ref: 'v2.22.1'
         commit: 'sha1-ccd8616d44fd3846e67624a50d5aad6d37bf2d25'
         owner_id: 88700172

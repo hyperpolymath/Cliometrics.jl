@@ -1,5 +1,6 @@
 [tools]
 # Language runtimes
+julia = "latest"
 rust = "latest"
 zig = "latest"
 bun = "latest"
@@ -32,7 +33,7 @@ gnu-grep = "latest"
 # Task runner alias
 [alias]
 task = "go-task"
-build = "cargo build --release"
-test = "cargo test"
+build = "julia --project=. -e 'using Pkg; Pkg.instantiate()'"
+test = "julia --project=. -e 'using Pkg; Pkg.test()'"
 lint = "bun install --frozen-lockfile && bunx --no-install --bun prettier --check ."
 fmt = "bun install --frozen-lockfile && bunx --no-install --bun prettier --write ."

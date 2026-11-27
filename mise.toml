@@ -4,9 +4,6 @@ julia = "latest"
 zig = "latest"
 bun = "latest"
 
-# Package managers
-go-task = "latest"
-
 # Formatting & Linting
 shfmt = "latest"
 stylua = "latest"
@@ -28,7 +25,6 @@ gnu-grep = "latest"
 
 # Task runner alias
 [alias]
-task = "go-task"
 build = "julia --project=. -e 'using Pkg; Pkg.instantiate()'"
 test = "julia --project=. -e 'using Pkg; Pkg.test()'"
 lint = "bun install --frozen-lockfile && bunx --no-install --bun prettier --check ."

@@ -1,14 +1,10 @@
 [tools]
 # Language runtimes
 julia = "latest"
-rust = "latest"
 zig = "latest"
 bun = "latest"
-denojs = "latest"
 
 # Package managers
-pnpm = "latest"
-cargo = "latest"
 go-task = "latest"
 
 # Formatting & Linting

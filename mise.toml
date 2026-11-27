@@ -23,9 +23,15 @@ gnu-grep = "latest"
 [env]
 # Common environment variables
 
-# Task runner alias
-[alias]
-build = "julia --project=. -e 'using Pkg; Pkg.instantiate()'"
-test = "julia --project=. -e 'using Pkg; Pkg.test()'"
-lint = "bun install --frozen-lockfile && bunx --no-install --bun prettier --check ."
-fmt = "bun install --frozen-lockfile && bunx --no-install --bun prettier --write ."
+
+[tasks.build]
+run = 'julia --project=. -e 'using Pkg; Pkg.instantiate()''
+
+[tasks.test]
+run = 'julia --project=. -e 'using Pkg; Pkg.test()''
+
+[tasks.lint]
+run = 'bun install --frozen-lockfile && bunx --no-install --bun prettier --check .'
+
+[tasks.fmt]
+run = 'bun install --frozen-lockfile && bunx --no-install --bun prettier --write .'
